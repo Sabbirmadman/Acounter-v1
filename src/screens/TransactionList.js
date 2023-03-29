@@ -6,12 +6,15 @@ import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 import { AuthContext } from "../Context/AuthContext";
 import { demoData } from "../demoData";
 import { FlatList } from "react-native";
+import TransectionView from "../components/TransectionView";
+
+import { Button } from "react-native";
+import DatePicker from "../components/DatePicker";
 
 export default function TransactionList({ navigation }) {
     const [searchTerm, setSearchTerm] = useState("");
     const user = useContext(AuthContext);
     const data = demoData;
-
     const filteredData = data.filter((item) => item.title.includes(searchTerm));
 
     return (
@@ -60,14 +63,23 @@ export default function TransactionList({ navigation }) {
                     <Feather name="search" size={24} color="black" />
                 </TouchableOpacity>
             </View>
+            <View style={calenderStyle.container}>
+                <View>
+                    <DatePicker />
+                </View>
+                <View>
+                    <DatePicker />
+                </View>
+            </View>
             <FlatList
                 data={filteredData}
-                renderItem={({ item }) => <Text>{item.title}</Text>}
+                renderItem={({ item }) => <TransectionView item={item} />}
                 keyExtractor={(item) => item.id.toString()}
             />
         </SafeAreaView>
     );
 }
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -95,6 +107,17 @@ const styles = StyleSheet.create({
     userName: {
         fontSize: 20,
         textTransform: "uppercase",
+    },
+});
+const calenderStyle = StyleSheet.create({
+    container: {
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        flexDirection: "row",
+        paddingHorizontal: 16,
+        paddingVertical: 10,
+        borderColor: "#A1B6DB",
+        justifyContent: "space-between",
     },
 });
 

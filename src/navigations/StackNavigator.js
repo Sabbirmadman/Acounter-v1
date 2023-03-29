@@ -4,6 +4,7 @@ import Homepage from "../screens/Home/HomePage";
 import LandingScreen from "../screens/Onbording/LandingScreen";
 import LoginScreen from "../screens/Onbording/LoginScreen";
 import RegisterScreen from "../screens/Onbording/RegisterScreen";
+import TransactionList from "../screens/TransactionList";
 
 const Auth = createStackNavigator();
 const Home = createStackNavigator();
@@ -45,6 +46,7 @@ export function HomeStack() {
             initialRouteName="HomeScreen"
         >
             <Home.Screen name="HomeScreen" component={Homepage} />
+            <Home.Screen name="trList" component={TransactionList} />
         </Home.Navigator>
     );
 }

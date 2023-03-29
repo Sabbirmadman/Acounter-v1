@@ -31,7 +31,8 @@ export default function TransectionView({ item, onPress }) {
                             color: "#A1B6DB",
                         }}
                     >
-                        {item.lastTrans}
+                        {item.lastTrans} - {item.lastTransTime}{" "}
+                        {item.lastTransTime < 12 ? "AM" : "PM"}
                     </Text>
                     <Text
                         style={{

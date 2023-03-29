@@ -136,7 +136,7 @@ export default function HomePage({ navigation }) {
                     onPress={() => {}}
                 />
 
-                <View
+                <TouchableOpacity
                     style={{
                         paddingHorizontal: 16,
                         paddingVertical: 10,
@@ -147,28 +147,19 @@ export default function HomePage({ navigation }) {
                         justifyContent: "space-between",
                         alignItems: "center",
                     }}
+                    onPress={() => navigation.navigate("trList")}
                 >
                     <Text style={{ fontSize: 16, fontWeight: "bold" }}>
                         Recent Transactions
                     </Text>
                     <AntDesign name="right" size={16} color="black" />
-                </View>
+                </TouchableOpacity>
                 {/* flatlist of transactions */}
                 <View>
                     {limitData.map((item, index) => {
                         return <TransectionView item={item} key={index} />;
                     })}
                 </View>
-                <CustomButton
-                    title="Add"
-                    buttonStyle={{
-                        backgroundColor: "#528AF0",
-                        height: 50,
-                        margin: 16,
-                        borderRadius: 50,
-                    }}
-                    onPress={() => {}}
-                />
             </ScrollView>
         </SafeAreaView>
     );
